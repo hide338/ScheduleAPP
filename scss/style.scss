@@ -1,0 +1,1163 @@
+/**
+ * テーマカラー
+ */
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$orange:  #fd7e14 !default;
+$teal:    #20c997 !default;
+// $blue:    #0054b4;
+$blue:    rgb(0, 169, 221);
+$red:     #F55360;
+$yellow:  #DBB821;
+$green:   #65C05E;
+$cyan: #00a6ff;
+$primary:       $blue;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+$text-color: $gray-800;
+
+@mixin bg-color($angle: 270deg, $color: $primary, $amount: 5%) {
+  background: linear-gradient($angle, $color, adjust-hue($color, $amount));
+}
+
+/**
+ * フォント
+ */
+// font-sizeを設定
+$font-size-base:              12px;
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.5 !default;
+$h4-font-size:                $font-size-base * 1.3 !default;
+$h5-font-size:                $font-size-base * 1 !default;
+$h6-font-size:                $font-size-base !default;
+
+h1 {
+  font-size: $h1-font-size;
+}
+h2 {
+  font-size: $h2-font-size;
+}
+h3 {
+  font-size: $h3-font-size;
+}
+h4 {
+  font-size: $h4-font-size;
+}
+h5 {
+  font-size: $h5-font-size;
+}
+h6 {
+  font-size: $h6-font-size;
+}
+
+// font-weightを設定
+.font-bold{
+  font-weight: bold;
+}
+.font-normal{
+  font-weight: normal;
+}
+
+/**
+ * メディアクエリ
+ */
+// breakpointの設定
+$mq-breakepoints: (
+  xl: 1440px,
+  lg: 1280px,
+  md: 1024px,
+  tb: 768px,
+  sm: 576px,
+xs: 414px
+) !default;
+// Media Queryの設定
+@mixin mq($breakpoint: md, $rule: max, $subtraction: false) {
+  $breakpoint: map_get($mq-breakepoints, $breakpoint);
+  @if $rule==max and $subtraction {
+    $breakpoint: $breakpoint - 0.0625;
+  }
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}
+
+/**
+ * レイアウトグリッド
+ */
+$wrapper-width : 1440px;
+.ly_wrapper {
+  max-width: $wrapper-width;
+  margin: 0 auto;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  display: -ms-flexbox;
+  // @include mq(md, max, false) {
+  //   display: block;
+  // }
+}
+.col-1 {
+  width: calc(100%/12*1);
+}
+.col-2 {
+  width: calc(100%/12*2);
+}
+.col-3 {
+  width: calc(100%/12*3);
+}
+.col-4 {
+  width: calc(100%/12*4);
+}
+.col-5 {
+  width: calc(100%/12*5);
+}
+.col-6 {
+  width: calc(100%/12*6);
+}
+.col-7 {
+  width: calc(100%/12*7);
+}
+.col-8 {
+  width: calc(100%/12*8);
+}
+.col-9 {
+  width: calc(100%/12*9);
+}
+.col-10 {
+  width: calc(100%/12*10);
+}
+.col-11 {
+  width: calc(100%/12*11);
+}
+
+
+/**
+ * 初期設定
+ */
+
+// background-colorと文字色を指定
+body {
+  background-color: rgb(240, 240, 240);
+  color: $text-color;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.95rem;
+  color: $text-color;
+}
+
+ul {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: $text-color;
+}
+
+// よく使うクラス
+.d-flex {
+  display: flex;
+  display: -ms-flexbox;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.item-center {
+  align-items: center;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// card設定
+.bl_card {
+  margin: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+}
+
+.bl_cardBody {
+  padding: 10px;
+  overflow: hidden;
+}
+
+// ログイン画面
+.login {
+  h2 {
+    text-align: center;
+    margin: 10px 0 30px;
+  }
+
+  button {
+    margin-top: 1em;
+  }
+
+  .login__reminder {
+    text-align: center;
+    margin-top: 0.5em;
+
+    a{
+      color: $gray-600;
+      font-size: 0.8em;
+    }
+  }
+}
+
+// テーブル設計
+// オリジナルテーブルようにmixin作成（<thead>のカラーを変更できるように引数を設定）
+@mixin bl_table() {
+  border: 1px solid #ced4da;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  // background-color: $thead-color;
+  @include bg-color;
+  thead {
+    text-align: center;
+    color: #fff;
+    th {
+      border-bottom: 1px solid #ced4da;
+      padding: 5px;
+      height: 30px;
+      line-height: 30px;
+      // width: calc(100% / 12 * 11);
+    }
+    th + th {
+      border-left: 1px solid #ced4da;
+      // width: calc(100% / 12 * 1);
+    }
+  }
+
+  tbody {
+    background-color: #fff;
+    th {
+      background-color: #eee;
+      border-bottom: 1px solid #ced4da;
+      line-height: 30px;
+      padding: 5px;
+    }
+    td {
+      border-bottom: 1px solid #ced4da;
+      line-height: 30px;
+      padding: 5px;
+      text-align: center;
+    }
+    td + td {
+      border-left: 1px solid #ced4da;
+    }
+    tr{
+      &:last-child th,
+      &:last-child td {
+        border-bottom: none;
+      }
+      &:nth-of-type(2n){
+        background-color: $gray-200;
+      }
+    }
+  }
+}
+// テーブルの<thead>の配色を指定してスタイルを作る
+.bl_table {
+  @include bl_table();
+  width: 100%;
+}
+
+// ボタン設計
+.el_btn {
+  margin: 0 10px 0 10px;
+
+}
+// オリジナルボタンをmixinで作成（ボタンの色とtextの色を指定できるよう引数を設定）
+@mixin my-btn($btn-color, $text-color: #fff) {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid $btn-color;
+  border-radius: 0.2rem;
+  background-color: $btn-color;
+  color: $text-color;
+  transition: .3s;
+  &:hover {
+    opacity: 0.8;
+    transition: .3s;
+  }
+}
+// ボタンのバックグラウンドが白のバージョンもmixinで作成
+@mixin my-btn-outline($btn-color, $text-color: #fff) {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid $btn-color;
+  border-radius: 0.2rem;
+  background-color: #fff;
+  color: $btn-color;
+  transition: .3s;
+  &:hover {
+    color: $text-color;
+    background-color: $btn-color;
+    transition: .3s;
+  }
+}
+// 以下、ボタンの使用例
+.btn-primary {
+  @include my-btn($primary);
+  @include bg-color;
+}
+.btn-secondary {
+  @include my-btn($secondary);
+}
+.btn-success {
+  @include my-btn($success);
+}
+.btn-danger {
+  @include my-btn($danger);
+}
+.btn-warning {
+  @include my-btn($warning, $text-color);
+}
+.btn-info {
+  @include my-btn($info, $text-color);
+}
+.btn-light {
+  @include my-btn($light, $text-color);
+}
+.btn-dark {
+  @include my-btn($dark);
+}
+.btn-outline-primary {
+  @include my-btn-outline($primary);
+}
+.btn-outline-secondary {
+  @include my-btn-outline($secondary);
+}
+.btn-outline-success {
+  @include my-btn-outline($success);
+}
+.btn-outline-danger {
+  @include my-btn-outline($danger);
+}
+.btn-outline-warning {
+  @include my-btn-outline($warning, $text-color);
+}
+.btn-outline-info {
+  @include my-btn-outline($info, $text-color);
+}
+.btn-outline-light {
+  @include my-btn-outline($light, $text-color);
+  color: #3c3c3c
+}
+.btn-outline-dark {
+  @include my-btn-outline($dark);
+}
+
+
+// ナビゲーションバー
+.my-nav-item {
+  padding: 0 10px;
+}
+.my-nav-link {
+  text-align: center;
+  position: relative;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  padding-right: var(--bs-navbar-nav-link-padding-x);
+  padding-left: var(--bs-navbar-nav-link-padding-x);
+  display: block;
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: #3c3c3c;
+  text-decoration: none;
+  &::before {
+    background: #ff701e;
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: var(--bs-nav-link-padding-x);
+    bottom: var(--bs-nav-link-padding-y);
+    margin: auto;
+    transform-origin: center top;
+    transform: scale(0, 1);
+    transition: transform .3s;
+  }
+  &:hover {
+    color: #3c3c3c;
+    &::before {
+      transform-origin: center top;
+      transform: scale(1, 1);
+    }
+  }
+}
+
+/*---------------------------------------------
+layout
+----------------------------------------------*/
+.ly_header {
+  @include bg-color;
+  min-width: 1080px;
+  box-shadow: 0 3px 10px $gray-600;
+  height: 80px;
+}
+
+.ly_header_inner {
+  padding: 0 2%;
+  height: 100%;
+  .bl_systemTitle {
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.ly_container {
+  padding: 0 10px;
+  min-width: 1080px;
+  @media screen and (max-width: 1100px) {
+    padding: 0;
+  }
+}
+
+.ly_main {
+  width: calc(80% - 20px);
+  min-width: 768px;
+  margin-top: 20px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  .ly_main_sec__30px {
+    height: 30px;
+  }
+  // @include mq(md, max, false) {
+  //   width: 100%;
+  //   margin-right: 0;
+  // }
+}
+
+.ly_main__w100 {
+  width: 100%;
+}
+
+.ly_main__mr0 {
+  margin-right: 0;
+}
+
+.ly_sidebar {
+  width: 20%;
+  // padding: 20px;
+  margin-top: 30px;
+}
+
+/*---------------------------------------------
+共通 block&element
+----------------------------------------------*/
+.el_subTitle {
+  line-height: 30px;
+  margin: 0 20px;
+}
+
+.el_3rdTitle {
+  line-height: 30px;
+  margin: 0 20px;
+}
+
+.el_today {
+  margin-top: 20px;
+}
+
+.el_tab {
+  text-align: center;
+  border: 1px solid #ced4da;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  line-height: 30px;
+  background-color: rgb(240, 240, 240);
+  cursor: pointer;
+}
+
+.el_tab.active {
+  border-bottom: none;
+  background-color: white;
+}
+
+.el_tab__radiusTopLeft0 {
+  border-top-left-radius: 0;
+}
+
+.el_tab__radiusTopRight0 {
+  border-top-right-radius: 0;
+}
+
+.bl_day {
+  border-left: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  padding: 10px;
+  background-color: white;
+}
+
+.bl_month {
+  margin-bottom: 10px;
+}
+
+.bl_table__borderNone {
+  border: none;
+}
+
+.bl_table__borderRadius0 {
+  border-radius: 0;
+}
+
+.bl_card__hightCalc {
+  height: calc(100vh - 105px);
+}
+
+.bl_cardBody__hight100 {
+  height: 100%;
+}
+
+.bl_scrollbox {
+  height: 100%;
+  overflow-y: scroll !important;
+  // 2022/12/13 nakahara スクロールバーを表示させるため下記の設定をコメントアウト
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.el_icon {
+  width: 20px;
+  height: 20px;
+}
+
+.el_secTitle {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.bl_kandata {
+  font-size: 0.8rem;
+  line-height: 15px;
+  margin-bottom: 3px;
+  &:nth-of-type(1) {
+    margin-top: 3px;
+  }
+}
+
+.d-block {
+  display: block;
+}
+
+a {
+  cursor: pointer;
+}
+
+.bl_categorycolor__fkb11 {
+  background-color: rgba(0, 255, 170, 0.2) !important;
+}
+.bl_categorycolor__fkb0 {
+  background-color: rgba(255, 174, 0, 0.2) !important;
+}
+.bl_categorycolor__fkb30-32 {
+  background-color: rgba(162, 0, 255, 0.3) !important;
+}
+.bl_categorycolor__fkb33-34 {
+  background-color: rgba(0, 195, 255, 0.2) !important;
+}
+.bl_categorycolor__fkb36 {
+  background-color: rgba(255, 0, 191, 0.2) !important;
+}
+.bl_categorycolor__fkb14 {
+  background-color: rgba(238, 255, 0, 0.2) !important;
+}
+.bl_categorycolor__fkb44 {
+  background-color: rgba(255, 0, 234, 0.1) !important;
+}
+.bl_categorycolor__fkb51 {
+  background-color: rgba(157, 255, 0, 0.2) !important;
+}
+.bl_categorycolor__gray {
+  background-color:$gray-200 !important;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.tab-active {
+  background-color: #fff;
+}
+
+
+
+/*---------------------------------------------
+header
+----------------------------------------------*/
+.el_mainIcon_img {
+  height: 2rem;
+  padding-right: 5px;
+}
+
+.el_title {
+  color: #fff;
+  margin: 0;
+}
+
+.bl_header-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  // @include mq(md, max, false){
+  //   opacity: 1;
+  //   pointer-events: auto;
+  // }
+  .el_btn {
+    cursor: pointer;
+  }
+}
+
+/*---------------------------------------------
+table共通
+----------------------------------------------*/
+.bl_daylist,
+.bl_weeklist,
+.bl_monthlist {
+  tr {
+    width: 100%;
+    display: flex;
+    th,
+    td {
+      display: block;
+    }
+  }
+  
+  tbody {
+    height: calc(100vh - 260px);
+    display: block;
+    overflow: auto;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    td{
+      line-height: 20px;
+    }
+    @media screen and (max-width: 1100px) {
+      height: calc(100vh - 280px);
+    }
+  }
+}
+
+
+/*---------------------------------------------
+daylist
+----------------------------------------------*/
+.bl_daylist {
+  // background-color: white;
+  border: 1px solid #ced4da;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  // font-size: 0.85em;
+  // overflow: auto;
+  // max-height: 900px;
+
+  th, td {
+    display: block;
+    &:nth-of-type(1){
+      width: 3%;
+    }
+    &:nth-of-type(2){
+      width: 8%;
+    }
+    &:nth-of-type(3){
+      width: 15%;
+    }
+    &:nth-of-type(4){
+      width: 10%;
+    }
+    &:nth-of-type(5){
+      width: 14%;
+    }
+    &:nth-of-type(6){
+      width: 25%;
+    }
+    &:nth-of-type(7){
+      width: 10%;
+    }
+    &:nth-of-type(8){
+      width: 10%;
+    }
+    &:nth-of-type(9){
+      width: 5%;
+    }
+  }
+}
+
+
+/*---------------------------------------------
+weeklist
+----------------------------------------------*/
+.bl_weeklist {
+  thead {
+    tr {
+      th {
+        width: calc(100% / 7);
+      }
+    }
+  }
+
+  tbody {
+    overflow: hidden;
+    tr{
+      display: flex;
+      height: 100%;
+      td {
+        display: block;
+        padding: 0;
+        align-items: center;
+        overflow: auto;
+        // vertical-align: top;
+        width: calc(100% / 7);
+        .listcol {
+          font-size: 0.7rem;
+          margin-right: 5px;
+          margin-left: 5px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          color: $text-color;
+          dd {
+            &:nth-of-type(1){
+              width: 25%;
+            }
+            &:nth-of-type(2){
+              width: 20%;
+            }
+            &:nth-of-type(3){
+              width: 55%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*---------------------------------------------
+monthlist
+----------------------------------------------*/
+.bl_monthlist {
+  width: auto;
+  table {
+    border-radius: 0;
+  }
+
+  thead {
+    tr {
+      th {
+        width: calc(100% / 7);
+      }
+    }
+  }
+
+  tbody {
+    height: auto;
+    overflow: hidden;
+    tr{
+      // height: calc(100% / 5);
+      td {
+        display: block;
+        padding: 0;
+        align-items: center;
+        overflow: auto;
+        // vertical-align: top;
+        width: calc(100% / 7);
+        a {
+          font-size: 1rem;
+          padding: 5px;
+        }
+        .bl_monthlist {
+          height: 110px;
+          overflow: auto;
+          -ms-overflow-style: none;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          .listcol {
+            font-size: 0.7rem;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            color: $text-color;
+            dd {
+              &:nth-of-type(1){
+                width: 25%;
+              }
+              &:nth-of-type(2){
+                width: 20%;
+              }
+              &:nth-of-type(3){
+                width: 55%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*---------------------------------------------
+calendar
+----------------------------------------------*/
+.bl_calendar>tbody>tr>td {
+  background-color: white;
+  &:nth-of-type(1) {
+    a {
+      color: rgb(189, 0, 0);
+    }
+  }
+  &:nth-of-type(7) {
+    a {
+      color: rgb(0, 0, 190);
+    }
+  }
+}
+
+.today {
+  background-color: rgb(255, 251, 0) !important;
+}
+
+.selectday {
+  background-color: rgb(0, 255, 42) !important;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+// @media screen and (max-width: 1024px) {
+//   .bl_screen {
+//     position: absolute;
+//     left: 0;
+//     top: 80px;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: white;
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+
+//   .bl_screen.active {
+//     opacity: .8;
+//     transition: opacity 1s;
+//     pointer-events: auto;
+//   }
+
+//   .bl_md-calendar {
+//     position: absolute;
+//     right: 30px;
+//     top: 80px;
+//     width: 280px;
+//     opacity: 0;
+//     pointer-events: none;
+//   }
+//   .bl_md-calendar.active {
+//     opacity: 1;
+//     transition: opacity 1s;
+//     pointer-events: auto;
+//   }
+// }
+
+/*---------------------------------------------
+kandata
+----------------------------------------------*/
+.card-title {
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid $text-color;
+}
+
+.bl_kaninfo {
+  overflow: hidden;
+  background-color: rgb(250, 245, 201);
+  .bl_cardBody {
+    margin: 0;
+    padding: 20px 0;
+    @include mq(md, max, false) {
+      display: block;
+    }
+  }
+}
+
+.bl_abb-data {
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 30px;
+  @include mq(md, max, false) {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .kancode {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .kandata-left {
+    margin-right: 20px;
+    .kandata_sex {
+      height: 96px;
+      width: 96px;
+      border: 2px solid rgba(0, 0, 0, .1);
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    }
+  }
+
+  .kandata_right {
+    height: 96px;
+    .kandata_right_name-blood {
+      border-bottom: 1px solid $gray-600;
+      .kandata_right_name {
+        .kandata_right_name-kana {
+          font-size: 1.1rem;
+          font-weight: bold;
+          letter-spacing: 3px;
+          line-height: 20px;
+          p {
+            &:nth-of-type(1) {
+              margin-right: 10px;
+            }
+          }
+        }
+        .kandata_right_name-kanzi {
+          font-size: 1.5rem;
+          line-height: 56px;
+        }
+        span {
+          margin-left: 20px;
+        }
+      }
+      .kandata_right_bloodtype {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 40px;
+        img {
+          width: 40px;
+        }
+      }
+    }
+
+    .kandata_right_sub-info {
+      line-height: 30px;
+      margin-top: 10px;
+      p {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.bl_kinki-kansen-info {
+  position: relative;
+  height: 200px;
+  margin-right: 10px;
+  @include mq(md, max, false) {
+    width: auto;
+    margin-left: 10px;
+  }
+  .bl_kinki-kansen-info_tabtitle {
+    position: absolute;
+    width: calc(100% / 2);
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px 5px 0 0;
+    background-color: $gray-300;
+    left: 0;
+    top: 0;
+    font-size: 0.8rem;
+    &:nth-of-type(2) {
+      left: 50%;
+    }
+  }
+  .bl_kinki-kansen-info_tabtitle.tab-active {
+    background-color: white;
+  }
+  .bl_kinki,
+  .bl_kansen {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    height: 175px;
+    // overflow: auto;
+    border: 1px solid #ced4da;
+    border-top: none;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    background-color: #fff;
+    .el_nodata {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      width: 100%;
+      thead {
+        text-align: center;
+        color: $text-color;
+        tr {
+          display: flex;
+          th {
+            display: block;
+            border-bottom: 1px solid #ced4da;
+            // padding: 5px;
+            color: white;
+            line-height: 25px;
+            @include bg-color(270deg, $teal, 5%);
+            // width: calc(100% / 4);
+            &:nth-of-type(1) {
+              width: 17%;
+            }
+            &:nth-of-type(2) {
+              width: 10%;
+            }
+            &:nth-of-type(3) {
+              width: 30%;
+            }
+            &:nth-of-type(4) {
+              width: 43%;
+            }
+          }
+          th + th {
+            border-left: 1px solid #ced4da;
+          }
+        }
+      }
+      tbody {
+        display: block;
+        height: 147px;
+        background-color: #fff;
+        overflow: auto;
+        -ms-overflow-style:none;
+        tr{
+          display: flex;
+          width: 100%;
+          &:nth-of-type(2n){
+            background-color: $gray-200;
+          }
+          td {
+            display: block;
+            border-bottom: 1px solid #ced4da;
+            line-height: 25px;
+            // padding: 5px;
+            text-align: center;
+            // width: calc(100% / 4);
+            &:nth-of-type(1) {
+              width: 17%;
+            }
+            &:nth-of-type(2) {
+              width: 10%;
+            }
+            &:nth-of-type(3) {
+              width: 30%;
+            }
+            &:nth-of-type(4) {
+              width: 43%;
+            }
+          }
+          td + td {
+            border-left: 1px solid #ced4da;
+          }
+          }
+        }
+      
+    }
+  }
+}
+
+.bl_order {
+  .el_order__title {
+    line-height: 40px;
+  }
+  .bl_order-list {
+    .el_order-list__title {
+      line-height: 25px;
+      font-weight: bold;
+      margin-top: 5px;
+      &:nth-of-type(1) {
+        margin-top: 0;
+      }
+    }
+    .el_order-list__data {
+      line-height: 25px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.el_btn__return {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  line-height: 30px;
+}
