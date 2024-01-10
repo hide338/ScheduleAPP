@@ -61,6 +61,8 @@ ScheduleApp -検査・手術予定表-
 - 患者詳細画面
    ![患者詳細](https://github.com/hide338/ScheduleApp/assets/93624688/84a9750e-9ceb-47bd-aa6d-46eb6169cceb)
 
+  <p align="right">(<a href="#top">トップへ</a>)</p>
+
 ## 環境
 
 <!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
@@ -70,8 +72,6 @@ ScheduleApp -検査・手術予定表-
 | PHP                   | 8.1.13       |
 | Apache                | 2.4.54       |
 | SQL Server            | 10.50.4302.0 |
-
-その他のパッケージのバージョンは pyproject.toml と package.json を参照してください
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
 
