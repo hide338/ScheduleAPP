@@ -52,6 +52,15 @@ ScheduleApp -検査・手術予定表-
 
 ### システムイメージ図
 
+- 日別画面
+   ![日別](https://github.com/hide338/ScheduleApp/assets/93624688/1ff93fa3-a365-49b7-8a58-c69622e6cc45)
+- 週別画面
+   ![週別](https://github.com/hide338/ScheduleApp/assets/93624688/f0635f68-302b-4d06-a592-dc0863778105)
+- 月別画面
+   ![月別](https://github.com/hide338/ScheduleApp/assets/93624688/ecdf3972-fb55-470f-90aa-cb9f6d32c86d)
+- 患者詳細画面
+   ![患者詳細](https://github.com/hide338/ScheduleApp/assets/93624688/84a9750e-9ceb-47bd-aa6d-46eb6169cceb)
+
 ## 環境
 
 <!-- 言語、フレームワーク、ミドルウェア、インフラの一覧とバージョンを記載 -->
